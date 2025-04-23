@@ -1,0 +1,31 @@
+# --- Entorno virtual ---
+modules/
+
+# --- Archivos de Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# --- Archivos de entorno ---
+.env
+*.env
+
+# --- Logs ---
+*.log
+
+# --- Base de datos SQLite (si llegas a usarla localmente) ---
+*.sqlite3
+
+# --- IDEs y editores ---
+.vscode/
+.idea/
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+
+# --- Otros temporales ---
+*.bak
+*.swp
+*.tmp

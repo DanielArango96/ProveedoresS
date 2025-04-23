@@ -1,0 +1,7 @@
+.bannerl{
+    background-image: url("../../../src/assets/fondoproveedor.avif");
+    background-position: top center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 25%;
+}
