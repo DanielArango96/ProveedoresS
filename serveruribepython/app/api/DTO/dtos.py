@@ -29,14 +29,13 @@ class ProveedorDTOEnvio(BaseModel): #EL DTO DE RESPUESTA
 
 
 
-class LogisticaDTOEnvio(BaseModel): #EL DTO DE RESPUESTA
-    id:int
+class LogisticaDTOEnvio(BaseModel): #EL DTO DE ENVIO
     nombreProveedor:str
     nombreEncargado:str
     correoEncargado: str
     numeroContactoEncargado:str
     productos : str
-    cantidad:str
+    cantidad:int
     numeroRecibo:str
     detalles:str
     transportadora:str
@@ -45,13 +44,13 @@ class LogisticaDTOEnvio(BaseModel): #EL DTO DE RESPUESTA
 
 
 class LogisticaDTO(BaseModel): #EL DTO DE RESPUESTA
-    id:int
+    
     nombreProveedor:str
     nombreEncargado:str
     correoEncargado: str
     numeroContactoEncargado: str
     productos :str
-    cantidad:str
+    cantidad: int
     numeroRecibo:str
     detalles: str
     transportadora:str

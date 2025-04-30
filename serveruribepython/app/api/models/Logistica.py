@@ -12,7 +12,7 @@ class Logistica(Base):
     correoEncargado= Column(String(100))
     numeroContactoEncargado= Column(String(50))
     productos = Column(String(300))
-    cantidad=Column(String(50))
+    cantidad=Column(Integer)
     numeroRecibo=Column(String(50))
     detalles= Column(String(200))
     transportadora=Column(String(50))

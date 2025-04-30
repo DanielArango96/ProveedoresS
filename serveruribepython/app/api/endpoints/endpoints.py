@@ -71,12 +71,13 @@ def buscarProveedores(database:Session=Depends(conectarConBd)):
 
 @rutas.post("/logistica",response_model=LogisticaDTOEnvio,summary="Servicio para guardar la logistica en la BD")
 def guardarLogistica(datosLogistica:LogisticaDTO,database:Session=Depends(conectarConBd)):
+
     try:
         fecha_recepcion = datosLogistica.fechaRecepcion
-        if isinstance(fecha_recepcion, str):
-            fecha_recepcion = datetime.strptime(fecha_recepcion, "%Y-%m-%d").date()
-        
-        guardarLogistica=Logistica(
+        if isinstance(fecha_recepcion, str):  
+            fecha_recepcion = datetime.strptime(fecha_envio, "%Y-%m-%d").date()
+            
+        registro = Logistica(
             nombreProveedor=datosLogistica.nombreProveedor,
             nombreEncargado=datosLogistica.nombreEncargado,
             correoEncargado=datosLogistica.correoEncargado,
@@ -88,7 +89,12 @@ def guardarLogistica(datosLogistica:LogisticaDTO,database:Session=Depends(conect
             transportadora=datosLogistica.transportadora,
             numeroGuia=datosLogistica.numeroGuia,
             fechaRecepcion=datosLogistica.fechaRecepcion
+        
         )
+        
+        print(f"Fecha Recepción recibida: {datosLogistica.fechaRecepcion}")
+        
+
         database.add(guardarLogistica) 
         database.commit()
         database.refresh(guardarLogistica)
@@ -103,7 +109,7 @@ def guardarLogistica(datosLogistica:LogisticaDTO,database:Session=Depends(conect
 @rutas.get("/logistica", response_model=List[LogisticaDTOEnvio], summary="Servicio para consultar todos los")   
 def buscarLogistica(database:Session=Depends(conectarConBd)):
     try:
-        proveedores=database.query(Proveedor).all()
+        proveedores=database.query(Logistica).all()
         return logistica
     except Exception as error:
         database.rollback()
